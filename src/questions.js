@@ -26,7 +26,7 @@ function questions(type) {
         type: 'input',
         message: `Please enter manager's office number`,
         name: 'officeNum'
-    }]
+    }];
 
     let engineerQues = [{
         type: 'input',
@@ -47,7 +47,7 @@ function questions(type) {
         type: 'input',
         message: `Please enter engineer's GitHub username`,
         name: 'github'
-    }]
+    }];
 
     let internQues = [{
         type: 'input',
@@ -68,14 +68,14 @@ function questions(type) {
         type: 'input',
         message: `Please enter intern's school`,
         name: 'school'
-    }]
+    }];
 
     let nextQuestions = [{
         type: 'list',
         message: `Please select one of the following:`,
         choices: ["Add an intern", "Add an engineer", "Finish building team"],
         name: 'next'
-    }]
+    }];
 
     let quests;
 
