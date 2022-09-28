@@ -20,7 +20,6 @@ function createHead() {
 
     try {
         fs.writeFileSync('./dist/output.html', headerText);
-        console.log('opened file and wrote header');
     } catch (err) {
         console.log("Unable to write header");
         throw err;
@@ -66,7 +65,6 @@ function createCard(employee) {
 
     try {
         fs.appendFileSync('./dist/output.html', text);
-        console.log("Sucessfully wrote card");
      } catch (err) {
         console.log("unable to write file");
         throw err;
@@ -81,7 +79,6 @@ function createFooter() {
 
     try {
         fs.appendFileSync('./dist/output.html', text);
-        console.log("Sucessfully wrote footer");
      } catch (err) {
         console.log("unable to write footer");
         throw err;

@@ -17,7 +17,6 @@ function createManager() {
         let managerObj = new Manager(managerName, managerId, managerEmail, managerOfficeNumber);
 
         createCard(managerObj);
-        // completeHtml += managerHtml(managerObj);
         nextSteps();
     }).catch(err => {
         console.error(err);
@@ -34,8 +33,6 @@ function createEngineer() {
         let engineerObj = new Engineer(engineerName, engineerId, engineerEmail, engineerGithub);
 
         createCard(engineerObj);
-        // console.log(engineerObj);
-        // completeHtml += managerHtml(managerObj);
 
         nextSteps()
     }).catch(err => {
@@ -53,8 +50,6 @@ function createIntern() {
         let internObj = new Intern(internName, internId, internEmail, internSchool);
 
         createCard(internObj);
-        // console.log(internObj);
-        // completeHtml += managerHtml(managerObj);
         nextSteps()
     }).catch(err => {
         console.error(err);
@@ -82,11 +77,5 @@ function nextSteps() {
         return;
     })
 }
-
-// function generateHtml() {
-//     fs.writeFileSync('../dist/output.html', completeHtml, (err) => {
-//         if (err) console.error(err);
-//         console.log("html generated successfully");
-//     })
 
 module.exports = { createManager, createIntern, createEngineer, nextSteps };

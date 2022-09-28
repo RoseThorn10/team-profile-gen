@@ -3,13 +3,13 @@ body {
 }
 
 header {
-    background-color: darkcyan;
+    background-color: bisque;
     text-align: center;
     padding: 0.5rem;
 }
 
 .card {
-    background-color: cyan;
+    background-color: khaki;
     margin: 0.5rem;
 }
 

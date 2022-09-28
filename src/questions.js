@@ -1,11 +1,3 @@
-// const inquirer = require('inquirer');
-// const Manager = require('../lib/manager');
-// const Intern = require('../lib/intern')
-// const managerHtml = require('./manager_template');
-// let completeHtml = "";
-// const fs = require('fs');
-
-
 function questions(type) {
     let managerQues = [{
         type: 'input',
