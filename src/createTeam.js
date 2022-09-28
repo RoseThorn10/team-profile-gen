@@ -1,19 +1,23 @@
-const Manager = require('../lib/_manager');
-const Engineer = require("../lib/_engineer");
-const Intern = require('../lib/_intern');
+const Manager = require('../lib/Manager');
+const Engineer = require("../lib/Engineer");
+const Intern = require('../lib/Intern');
 const inquirer = require('inquirer');
 const questions = require('./questions');
-// const createHTML = require('./createHTML');
+const { createHead, createCard, createFooter } = require('./createHTML');
 
 function createManager() {
+    createHead();
+
     inquirer.prompt(questions('manager')).then((answers) => {
         let managerName = answers.name;
         let managerId = answers.id;
-        let managerEmail = answers.id;
+        let managerEmail = answers.email;
         let managerOfficeNumber = answers.officeNum;
 
         let managerObj = new Manager(managerName, managerId, managerEmail, managerOfficeNumber);
-        completeHtml += managerHtml(managerObj);
+
+        createCard(managerObj);
+        // completeHtml += managerHtml(managerObj);
         nextSteps();
     }).catch(err => {
         console.error(err);
@@ -24,11 +28,13 @@ function createEngineer() {
     inquirer.prompt(questions('engineer')).then((answers) => {
         let engineerName = answers.name;
         let engineerId = answers.id;
-        let engineerEmail = answers.id;
+        let engineerEmail = answers.email;
         let engineerGithub = answers.github;
 
         let engineerObj = new Engineer(engineerName, engineerId, engineerEmail, engineerGithub);
-        console.log(engineerObj);
+
+        createCard(engineerObj);
+        // console.log(engineerObj);
         // completeHtml += managerHtml(managerObj);
 
         nextSteps()
@@ -41,10 +47,12 @@ function createIntern() {
     inquirer.prompt(questions('intern')).then((answers) => {
         let internName = answers.name;
         let internId = answers.id;
-        let internEmail = answers.id;
+        let internEmail = answers.email;
         let internSchool = answers.school;
 
         let internObj = new Intern(internName, internId, internEmail, internSchool);
+
+        createCard(internObj);
         // console.log(internObj);
         // completeHtml += managerHtml(managerObj);
         nextSteps()
@@ -54,7 +62,7 @@ function createIntern() {
 }
 
 function nextSteps() {
-    inquirer.prompt(questions('next')).then(answers => {
+    return inquirer.prompt(questions('next')).then(answers => {
         switch (answers.next) {
             case "Add an intern":
                 createIntern();
@@ -65,13 +73,20 @@ function nextSteps() {
                 break;
 
             case "Finish building team":
-                generateHtml();
+                createFooter();
                 break;
         }
 
     }).catch(err => {
         console.error(err);
+        return;
     })
 }
 
-module.exports = createManager;
+// function generateHtml() {
+//     fs.writeFileSync('../dist/output.html', completeHtml, (err) => {
+//         if (err) console.error(err);
+//         console.log("html generated successfully");
+//     })
+
+module.exports = { createManager, createIntern, createEngineer, nextSteps };
